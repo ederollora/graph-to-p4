@@ -1,0 +1,161 @@
+{
+  "Name" : "V1Model",
+  "Switch Name" : "V1Switch",
+  "Pipeline" : ["ParserImpl", "VerifyChecksumImpl", "IngressImpl", "EgressImpl", "ComputeChecksumImpl", "DeparserImpl"],
+  "Default Libraries" : ["core", "v1model"],
+  "Intrinsic Metadata": { },
+  "User-defined Metadata": { },
+  "Programmable Blocks" : {
+    "ParserImpl" : {
+      "type": "parser",
+      "filename": "parser",
+      "has_apply": "False",
+      "abstraction": "parser",
+      "parameters": [
+        {
+          "name" : "packet",
+          "type": "packet_in"
+        },
+        {
+          "name" : "hdr",
+          "type": "headers_t",
+          "direction": "out"
+        },
+        {
+          "name" : "meta",
+          "type": "metadata",
+          "direction": "inout"
+        },
+        {
+          "name" : "standard_metadata",
+          "type": "standard_metadata_t",
+          "direction": "inout"
+        }
+      ]
+    },
+    "VerifyChecksumImpl": {
+      "type" : "control",
+      "filename": "verify_checksum",
+      "has_apply" : "True",
+      "abstraction": "extern",
+      "parameters" : [
+        {
+          "name" : "hdr",
+          "type" : "headers_t",
+          "direction" : "inout"
+        },
+        {
+          "name" : "meta",
+          "type" : "metadata",
+          "direction" : "inout"
+        }
+      ],
+      "default_methods" : []
+    },
+    "IngressImpl": {
+      "type": "control",
+      "filename": "ingress",
+      "has_apply": "True",
+      "abstraction": "mau",
+      "parameters": [
+        {
+          "name": "hdr",
+          "type": "headers_t",
+          "direction": "inout"
+        },
+        {
+          "name": "meta",
+          "type": "metadata",
+          "direction": "inout"
+        },
+        {
+          "name": "standard_metadata",
+          "type": "standard_metadata_t",
+          "direction": "inout"
+        }
+      ]
+    },
+    "EgressImpl": {
+      "type" : "control",
+      "filename": "egress",
+      "has_apply" : "True",
+      "abstraction": "mau",
+      "parameters" : [
+        {
+          "name" : "hdr",
+          "type" : "headers_t",
+          "direction" : "inout"
+        },
+        {
+          "name" : "meta",
+          "type" : "metadata",
+          "direction" : "inout"
+        },
+        {
+          "name" : "standard_metadata",
+          "type" : "standard_metadata_t",
+          "direction" : "inout"
+        }
+      ]
+    },
+    "ComputeChecksumImpl": {
+      "type" : "control",
+      "filename": "compute_checksum",
+      "has_apply" : "True",
+      "abstraction": "extern",
+      "parameters" : [
+        {
+          "name" : "hdr",
+          "type" : "headers_t",
+          "direction" : "inout"
+        },
+        {
+          "name" : "meta",
+          "type" : "metadata",
+          "direction" : "inout"
+        }
+      ],
+      "default_methods" : []
+    },
+    "DeparserImpl" : {
+      "type" : "control",
+      "filename": "deparser",
+      "has_apply" : "True",
+      "abstraction": "deparser",
+      "parameters" : [
+        {
+          "name" : "packet",
+          "type": "packet_out"
+        },
+        {
+          "name" : "hdr",
+          "type": "headers_t",
+          "direction": "in"
+        }
+      ]
+    }
+  },
+  "Headers" : {
+      "name" : "headers_t",
+      "filename" : "headers"
+  },
+  "Defines" : { },
+  "Constants" : {
+    "TYPE_IPV4" : {
+      "bitwidth" : 16,
+      "value" : "0x800"
+    }
+  },
+  "Typedefs" : {
+    "macAddr_t" : {
+      "bitwidth" : 48
+    },
+    "ip4Addr_t" : {
+      "bitwidth" : 32
+    }
+
+  },
+  "Main" : {
+    "filename" : "switch"
+  }
+}
