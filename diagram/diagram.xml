@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile modified="2019-09-21T19:49:40.532Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36" etag="dcEZKjAgrnG9uoVC0Lra" version="11.3.0" type="google" pages="1">
+  <diagram id="a321e11f-2dae-ec60-5947-b2b3264fb5cf" name="Page-1">
+    <mxGraphModel dx="781" dy="1064" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <object label="ETHERNET" type="state" parse_name="parse_ethernet" h_0_dstAddr="48" h_1_srcAddr="48" h_2_etherType="16" name="ethernet" id="2">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="300" y="360" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="IPv4" type="state" h_0_version="4" h_1_ihl="4" h_2_dscp="6" h_3_ecn="2" h_4_totalLength="16" h_5_identification="16" h_6_flags="3" h_7_fragOffset="13" h_8_ttl="8" h_9_protocol="8" h_11_srcAddr="32" h_12_dstAddr="32" parse_name="parse_ipv4" trans_prev_0="ethernet:etherType:h:0x0800" name="ipv4" h_10_hdrChecksum="16" id="3">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="460" y="280" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="TCP" type="state" h_0_srcPort="16" h_1_dstPort="16" h_2_seqNo="32" h_3_ackNo="32" h_4_dataOffset="4" h_5_res="3" h_6_ecn="3" h_7_crtl="6" h_8_window="16" h_9_checksum="16" h_10_urgentPtr="16" parse_name="parse_tcp" name="tcp" trans_prev_0="ipv4:protocol:h:0x06" trans_prev_1="ipv6:nextHeader:h:0x06" id="4">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="660" y="240" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="UDP" type="state" parse_name="parse_udp" h_0_srcPort="16" h_1_dstPort="16" h_2_len="16" h_3_checksum="16" name="udp" trans_prev_0="ipv4:protocol:hexadecimal:0x11" trans_prev_1="ipv6:nextHeader:hexadecimal:0x11" id="5">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="660" y="360" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="IPv6" type="state" h_0_version="4" h_1_trafficClass="8" h_2_flowLabel="20" h_6_srcAddr="128" h_7_dstAddr="128" h_4_nextHeader="8" h_5_hopLimit="8" parse_name="parse_ipv6" name="ipv6" h_3_len="16" trans_prev_0="ethernet:etherType:hex:0x86DD" id="6">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="460" y="440" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="START" type="state" name="start" id="13">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="140" y="360" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="ACCEPT" type="state" name="accept" id="14">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="860" y="360" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="ICMP" type="state" parse_name="parse_icmp" h_2_checksum="16" h_1_code="8" h_3_id="16" h_4_seqNo="16" name="icmp" h_0_tp="8" trans_prev_0="ipv4:protocol:hex:0x01" trans_prev_1="ipv6:nextHeader:hex:0x01" id="17">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=13;fontStyle=1" parent="1" vertex="1">
+            <mxGeometry x="660" y="480" width="80" height="80" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="" type="transition" on_field="" on_value="" default="true" on_value_type="" id="24">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="13" target="2" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="270" y="730" as="sourcePoint"/>
+              <mxPoint x="320" y="680" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" on_value_type="" on_header="" id="25">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="2" target="3" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="380" y="413" as="sourcePoint"/>
+              <mxPoint x="420" y="310" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" on_field="" on_value="" default="true" on_value_type="" from_header="" id="26">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="2" target="6" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="390" y="424" as="sourcePoint"/>
+              <mxPoint x="450" y="490" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="27">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="3" target="4" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="610" y="330" as="sourcePoint"/>
+              <mxPoint x="600" y="230" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="28">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="3" target="5" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="410" y="444" as="sourcePoint"/>
+              <mxPoint x="650" y="350" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="29">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="6" target="17" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="420" y="454" as="sourcePoint"/>
+              <mxPoint x="620" y="550" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="31">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="6" target="5" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="430" y="464" as="sourcePoint"/>
+              <mxPoint x="640" y="410" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="32">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="6" target="4" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="440" y="474" as="sourcePoint"/>
+              <mxPoint x="620" y="340" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="33">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="3" target="17" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="450" y="484" as="sourcePoint"/>
+              <mxPoint x="640" y="460" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="34">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="4" target="14" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="460" y="494" as="sourcePoint"/>
+              <mxPoint x="820" y="360" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="35">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="17" target="14" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="470" y="504" as="sourcePoint"/>
+              <mxPoint x="850" y="430" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" type="transition" from_state="" to_state="" on_field="" on_value="" default="true" id="36">
+          <mxCell style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="5" target="14" edge="1">
+            <mxGeometry width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="480" y="514" as="sourcePoint"/>
+              <mxPoint x="800" y="400" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
